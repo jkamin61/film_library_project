@@ -1,11 +1,11 @@
 {
-  "name": "parcel-project-template",
+  "name": "goit-js-project-group-7",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://goitacademy.github.io/parcel-project-template",
+  "homepage": "https://jkamin61.github.io/goit-js-project-group-7",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /parcel-project-template/"
+    "build": "parcel build src/*.html --public-url /goit-js-project-group-7/"
   },
   "repository": {
     "type": "git",
