@@ -1,0 +1,53 @@
+.footer {
+  background-color: rgba(247, 247, 247, 1);
+  padding-top: 28.7px;
+  padding-bottom: 29.7px;
+  text-align: center;
+
+  &__text {
+    font-family: 'Roboto';
+    font-size: 14px;
+    line-height: 1.143;
+    color: #545454;
+  }
+
+  &__link {
+    color: inherit;
+  }
+  &__heart {
+    width: 14px;
+    height: 12.88px;
+    display: -webkit-inline-box;
+    animation: beat 0.35s infinite alternate;
+    margin-inline: 10px;
+  }
+}
+
+@keyframes beat {
+  to {
+    transform: scale(1.4);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    padding-top: 30px;
+    padding-bottom: 28px;
+
+    &__wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    &__text {
+      display: inline;
+      font-size: 16px;
+      line-height: 1.188;
+
+      &:not(:last-child) {
+        margin-bottom: 0;
+        margin-right: 4px;
+      }
+    }
+  }
+}
