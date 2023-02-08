@@ -15,13 +15,17 @@
     color: inherit;
   }
   &__heart {
+    width: 14px;
+    height: 12.88px;
     display: -webkit-inline-box;
-    animation: beat .35s infinite alternate;;
+    animation: beat 0.35s infinite alternate;
   }
 }
 
-@keyframes beat{
-	to { transform: scale(1.4); }
+@keyframes beat {
+  to {
+    transform: scale(1.4);
+  }
 }
 
 @media screen and (min-width: 768px) {
