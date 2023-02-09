@@ -1,30 +1,4 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
-.example {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  line-height: 1.5;
-  background-color: #fff;
-  color: #2f2f37;
-  max-width: 960px;
-  padding: 16px;
-}
-
-.example code {
-  font-family: monospace;
-  font-size: 16px;
-  font-weight: 700;
-  background-color: #ff6b0a;
-  color: #fff;
-  padding: 2px 6px;
-  border-radius: 2px;
-}
-
-.example .background {
-  height: 240px;
-  background-image: url("../images/logo.png");
-  background-size: cover;
-  background-position: center;
-}
-
 .footer {
   background-color: rgb(247, 247, 247);
   padding-top: 28.7px;
@@ -32,7 +6,7 @@
   text-align: center;
 }
 .footer__text {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-size: 14px;
   line-height: 1.143;
   color: #545454;
@@ -41,8 +15,11 @@
   color: inherit;
 }
 .footer__heart {
+  width: 14px;
+  height: 12.88px;
   display: -webkit-inline-box;
   animation: beat 0.35s infinite alternate;
+  margin-inline: 10px;
 }
 
 @keyframes beat {
@@ -68,4 +45,16 @@
     margin-bottom: 0;
     margin-right: 4px;
   }
-}/*# sourceMappingURL=index.css.map */
+}
+html {
+  overflow-y: overlay;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 12px;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  color: getColor(title);
+} /*# sourceMappingURL=index.css.map */
