@@ -1,5 +1,5 @@
 export { compileGenreDictionary };
-import { FetchMoveApi } from './FetchMoveApi.js';
+import { FetchMoveApi } from './FetchMove';
 
 async function compileGenreDictionary() {
   /**
