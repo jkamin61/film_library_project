@@ -1,0 +1,12 @@
+html {
+    overflow-y: overlay;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-size: 12px;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    color: getColor(title);
+  }
