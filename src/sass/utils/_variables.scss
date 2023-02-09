@@ -7,8 +7,9 @@ $colors: (
   'accent': #ff6b01,
   'error': #ff001b,
   'background-modal': #ffffff,
-  'modal-text-color': #8c8c8c,
-  'modal-button-disabled': #b2afad,
+  'modal-text-color': #8C8C8C,
+  'modal-button-disabled':#b2afad,
+
 );
 
 @function getColor($key) {
