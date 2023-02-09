@@ -6,7 +6,7 @@
   text-align: center;
 }
 .footer__text {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-size: 14px;
   line-height: 1.143;
   color: #545454;
@@ -57,4 +57,4 @@ body {
   height: 100%;
   flex-direction: column;
   color: getColor(title);
-}/*# sourceMappingURL=index.css.map */
+} /*# sourceMappingURL=index.css.map */
