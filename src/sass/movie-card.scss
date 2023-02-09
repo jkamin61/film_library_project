@@ -1,0 +1,83 @@
+@import './utils/variables';
+.movie-card {
+  width: 280px;
+  height: 440px;
+
+  transition: scale 250ms ease;
+
+  &:hover {
+    scale: 0.98;
+  }
+}
+
+.movie-card__image {
+  width: 280px;
+  height: 398px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.movie-card__details {
+  margin-top: 10px;
+  color: getColor('title');
+
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+
+  &--genre {
+    position: relative;
+    color: getColor('accent');
+
+    &::after {
+      position: absolute;
+      display: inline-block;
+
+      right: -46px;
+      width: 36px;
+      height: 16px;
+
+      color: white;
+      text-align: center;
+
+      background-color: getColor('accent');
+      border-radius: 5px;
+    }
+  }
+  &--score {
+    display: inline-block;
+    width: 36px;
+    height: 16px;
+    margin-left: 10px;
+
+    color: white;
+    text-align: center;
+
+    background-color: getColor('accent');
+    border-radius: 5px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .movie-card {
+    width: 294px;
+    height: 440px;
+  }
+
+  .movie-card__image {
+    width: 293px;
+    height: 398px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .movie-card {
+    width: 274px;
+    height: 440px;
+  }
+  .movie-card__image {
+    width: 274px;
+    height: 398px;
+  }
+}
