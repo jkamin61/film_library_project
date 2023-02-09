@@ -1,5 +1,9 @@
 @import './common';
-@import './footer';
 @import './base/global';
+
 @import './utils/min-max';
 @import './utils/variables';
+
+@import './components/footer';
+@import './components/loader';
+@import './components/pagination';
