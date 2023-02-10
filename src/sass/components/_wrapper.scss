@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 0 auto;
+  padding: 30px;
+  max-width: 100%;
+}
+
+// DESKTOP
+
+@media screen and (width > 1200px) {
+  .wrapper {
+    max-width: 1200px;
+  }
+
+}
+
+// MOBILE
+
+@media screen and (width < 768px) {
+  .wrapper {
+    flex-direction: column;
+    padding: 20px;
+  }
+}
