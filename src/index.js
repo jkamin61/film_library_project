@@ -1,7 +1,7 @@
 import { createHomeCard, createLibraryCard } from './js/createCard';
 import { compileGenreDictionary } from './js/compileGenreDictionary';
 import { FetchMoveApi } from './js/FetchMove';
-
+import './js/openFooterMdl';
 const wrapper = document.querySelector('.wrapper');
 const PER_PAGE = 20;
 
