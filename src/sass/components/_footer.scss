@@ -13,6 +13,8 @@
 
   &__link {
     color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
   }
   &__heart {
     width: 14px;
@@ -33,7 +35,7 @@
     left: 93%;
     cursor: pointer;
   }
-  &__close:hover{
+  &__close:hover {
     transform: scale(1.5);
   }
 
@@ -56,7 +58,7 @@
     text-decoration: none;
     color: inherit;
   }
-  &__list-person:hover{
+  &__list-person:hover {
     transform: scale(1.2);
   }
 }
