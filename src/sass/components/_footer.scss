@@ -25,14 +25,15 @@
   }
   &__clapper {
     width: 100%;
-    max-width: 600px;
+    max-width: 300px;
     height: auto;
   }
+
   &__close {
     width: 25px;
-    position: absolute;
-    top: 20%;
-    left: 93%;
+    right: 2%;
+    top: 15%;
+
     cursor: pointer;
   }
   &__close:hover {
@@ -40,15 +41,13 @@
   }
 
   &__list {
-    position: absolute;
-    top: 46%;
-    left: 36%;
     list-style: none;
     padding: 0;
+    top: 42%;
   }
   &__list-person {
     font-family: 'Fredericka the Great', cursive;
-    font-size: 21px;
+    font-size: 16px;
     color: white;
     margin-bottom: 10px;
     text-align: center;
@@ -101,14 +100,23 @@
 }
 
 .modal {
+  justify-content: center;
+  display: flex;
+  position: relative;
+  top: 14%;
+}
+.modal > *:not(.footer__clapper) {
   position: absolute;
 }
-
 .is-hidden {
   display: none;
 }
 
 @media screen and (min-width: 768px) {
+  .modal {
+    top: 0%;
+  }
+
   .footer {
     padding-top: 30px;
     padding-bottom: 28px;
@@ -117,14 +125,18 @@
       display: flex;
       justify-content: center;
     }
+
+    &__list{
+      top: 45%;
+    }
     &__list-person {
       font-family: 'Fredericka the Great', cursive;
       font-size: 36px;
       color: white;
       margin-bottom: 10px;
     }
-    &__list {
-      left: 27%;
+    &__clapper {
+      max-width: 600px;
     }
 
     &__text {
