@@ -1,0 +1,134 @@
+@use '../utils/variables';
+
+.movie-info {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 280px;
+  border: 1px solid black;
+}
+
+.movie-info__container {
+  position: relative;
+  padding: 48px 20px 0px;
+}
+.movie-info__close {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+
+  width: 30px;
+  height: 30px;
+
+  font-weight: 700;
+  font-size: 20;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  transition: 250ms ease;
+  transition-property: scale;
+
+  &:hover {
+    color: red;
+    scale: 1.2;
+  }
+}
+
+.movie-info__poster {
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 5px;
+}
+
+.movie-info__title {
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.movie-info__table-row {
+  height: 26px;
+}
+.movie-info__table-legend {
+  width: 100px;
+}
+
+.movie-info__table-content {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+
+  &--score {
+    display: inline-block;
+    width: 36px;
+    height: 16px;
+
+    color: white;
+    text-align: center;
+
+    background-color: getColor('accent');
+    border-radius: 5px;
+  }
+}
+
+.movie-info__buttons {
+  margin-top: 21px;
+  padding-bottom: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.movie-info__button {
+  height: 44px;
+  width: 112px;
+  border-radius: 5px;
+  padding: 0px;
+
+  &--watched {
+    background-color: getColor('accent');
+    color: white;
+    border: none;
+  }
+
+  &--queue {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .movie-info__container {
+    display: flex;
+    min-width: 600px;
+    padding: 0;
+    padding: 42px 28px 40px;
+  }
+
+  .movie-info {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+  }
+
+  .movie-info__close {
+    top: 5px;
+    right: 5px;
+  }
+
+  .movie-info__column {
+    min-width: 40%;
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+  }
+
+  .movie-info__title {
+    margin-top: 0px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+}
