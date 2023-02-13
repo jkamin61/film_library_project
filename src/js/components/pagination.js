@@ -1,21 +1,20 @@
-import { genreIdToList } from "../genreIdToList";
 import { reference } from "../reference/reference";
 import { FetchMoveApi } from "../FetchMove";
-import { createHomeCard } from "../createCard";
-import { createLibraryCard } from "../createCard";
 import { Loader } from "./loader";
+import { setSerchMoves } from "./pagination-SearchMovie";
+import { onSearchFormButton } from "./searchMove";
+import { topFunction } from "./pagination-SearchMovie";
+import { createDotsbuttons } from "./pagination-SearchMovie";
+import { handleActiveButton } from "./pagination-SearchMovie";
+
 
 const loader = new Loader();
 const fetchMoveApi = new FetchMoveApi();
 
-export function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  }
 
-export async function setSerchMoves(query, page){
+export async function setPagination(page){
     reference.paginationNumbers.innerHTML = '';
-    const respo = await fetchMoveApi.getSearching(query, page);
+    const respo = await fetchMoveApi.getTrendDay(page);
     const totalNumberOfPages = await respo.total_pages;
     let currentPages = await respo.page;
     let paginationCreated = '';
@@ -68,56 +67,16 @@ export async function setSerchMoves(query, page){
             '.pagination-numbers button'
           );
 
-
-
-          export function createDotsbuttons() {
-            const firstDotButtonLocation = document.querySelector(
-              'button[data-id="1"]'
-            );
-            const lastDotButtonLocation = document.querySelector(
-              `button[data-id="${totalNumberOfPages}"`
-            );
-            const firstDotButton = document.createElement('button');
-            firstDotButton.textContent = '...';
-            firstDotButton.classList.add('pagination-container__first-dot-button');
-            const lastDotButton = document.createElement('button');
-            lastDotButton.textContent = '...';
-            lastDotButton.classList.add('pagination-container__last-dot-button');
-        
-            if (currentPages > 4) {
-              firstDotButtonLocation.after(firstDotButton);
-            }
-        
-            if (currentPages < totalNumberOfPages - 3)
-              lastDotButtonLocation.before(lastDotButton);
-          }
           createDotsbuttons();
-
-
-
-          export function handleActiveButton() {
-            paginationButtons.forEach(button => {
-              button.classList.remove('pagination-container__button--active');
-              let pageIndex = button.textContent;
-              if (pageIndex == currentPages) {
-                button.classList.add('pagination-container__button--active');
-              }
-            });
-          }
-        
           handleActiveButton();
-        
+
+
           paginationButtons.forEach(button => {
-            button.addEventListener('click', async event => {
+            button.addEventListener('click', event => {
               if (event.target.classList.contains('pagination-container__button')) {
                 topFunction();
                 loader.on();
                 let pageNumber = event.target.textContent;
-                const genresList = await genreIdToList();
-                const response = await fetchApiMovies.getSearching(query, pageNumber);
-                const movies = await response.results;
-                renderMoviesList(movies, genresList);
-                setSerchMoves(query, pageNumber);
                 //addModal();
                 loader.off();
               } else if (
@@ -126,11 +85,6 @@ export async function setSerchMoves(query, page){
                 topFunction();
                 loader.on();
                 currentPages--;
-                const genresList = await genreIdToList();
-                const response = await fetchApiMovies.getSearching(query, currentPages);
-                const movies = await response.results;
-                renderMoviesList(movies, genresList);
-                setSerchMoves(query, currentPages);
                 //addModal();
                 loader.off();
               } else if (
@@ -139,14 +93,8 @@ export async function setSerchMoves(query, page){
                 topFunction();
                 loader.on();
                 currentPages++;
-                const genresList = await genreIdToList();
-                const response = await fetchApiMovies.getSearching(query, currentPages);
-                const movies = await response.results;
-                createHomeCard(movies, genresList);
-                setSerchMoves(query, currentPages);
                 //addModal();
                 loader.off();
               }
             });
           });
-        
