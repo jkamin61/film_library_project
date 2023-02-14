@@ -12,6 +12,7 @@ const loader = new Loader();
 const fetchMoveApi = new FetchMoveApi();
 
 
+
 export async function setPagination(page){
     reference.paginationNumbers.innerHTML = '';
     const respo = await fetchMoveApi.getTrendDay(page);

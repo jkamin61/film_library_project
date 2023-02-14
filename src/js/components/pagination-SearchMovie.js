@@ -2,6 +2,7 @@ import {genreIdToList} from "../createCard";
 import { reference } from "../reference/reference";
 import { FetchMoveApi } from "../FetchMove";
 import { createHomeCard } from "../createCard";
+// import{addmodal}
 import { Loader } from "./loader";
 
 const loader = new Loader();
