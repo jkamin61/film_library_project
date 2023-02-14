@@ -1,31 +1,31 @@
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(5px);
-  }
+// .overlay {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background-color: rgba(0, 0, 0, 0.5);
+//     z-index: 999;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     backdrop-filter: blur(5px);
+//   }
   
-  .loader {
-    width: 100px;
-    height: 100px;
-    border: 10px solid #f3f3f3;
-    border-top: 10px solid getColor('accent');
-    border-radius: 50%;
-    animation: spin 2s linear infinite;
-  }
+//   .loader {
+//     width: 100px;
+//     height: 100px;
+//     border: 10px solid #f3f3f3;
+//     border-top: 10px solid getColor('accent');
+//     border-radius: 50%;
+//     animation: spin 2s linear infinite;
+//   }
   
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
+//   @keyframes spin {
+//     0% {
+//       transform: rotate(0deg);
+//     }
+//     100% {
+//       transform: rotate(360deg);
+//     }
+//   }
