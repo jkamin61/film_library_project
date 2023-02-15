@@ -1,20 +1,13 @@
-<div id="login-form" class="modal">
-  <form>
-    <h2>Log in</h2>
-    <label for="email">E-mail:</label>
-    <input type="email" id="email" name="email" required>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-    <button type="submit">Log in</button>
-  </form>
-</div>
-<div id="register-form" class="modal">
-  <form>
-    <h2>Sign up</h2>
-    <label for="email">E-mail:</label>
-    <input type="email" id="email" name="email" required>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-    <button type="submit">Sign up</button>
+<div id="login-form" class='login__modal'>
+  <form class='login__form'>
+    <div class='login__items'>
+    <h2 class='login__heading'>Log in</h2>
+      <img class='login__close' src='./images/log-reg-cross.svg' alt='close-button' width='14px' height='14px'>
+    </div>
+      <label for="email-login" class='login__label'>E-mail:</label>
+    <input type="email" class='login__input' id="email-login" name="email" required>
+    <label for="password-login">Password:</label>
+    <input type="password" class='login__input' id="password-login" name="password" required>
+    <button type="submit" class='login__modal-btn'>Log in</button>
   </form>
 </div>
