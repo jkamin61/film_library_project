@@ -2,7 +2,10 @@ import { createHomeCard, createLibraryCard } from './js/createCard';
 import { compileGenreDictionary } from './js/compileGenreDictionary';
 import { FetchMoveApi } from './js/FetchMove';
 import './js/openFooterMdl';
+import { searchMovies } from './js/searchMovie';
+
 const wrapper = document.querySelector('.wrapper');
+
 const PER_PAGE = 20;
 
 const get_movies = new FetchMoveApi();
