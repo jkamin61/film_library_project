@@ -5,9 +5,8 @@ import './js/openFooterMdl';
 import { modalFunctions } from './js/userLogin';
 const wrapper = document.querySelector('.wrapper');
 const PER_PAGE = 20;
-import { searchMovies } from './js/searchMovie';
 const get_movies = new FetchMoveApi();
-
+import { searchMovies } from './js/searchMovie';
 get_movies.getTrendDay(1).then(data => {
   compileGenreDictionary().then(genre_dictionary => {
     console.log(data.results[1]);
