@@ -9,4 +9,5 @@ html {
     height: 100%;
     flex-direction: column;
     color: getColor(title);
+    user-select: none
   }
