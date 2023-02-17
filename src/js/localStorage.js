@@ -1,17 +1,65 @@
-// dodac id do watched/queue buttons ?
-// FT-18 After clicking 'add to watch' and 'add to queue' the movie is beeing saved in local storage Po kliknięciu przycisku "Add to watched" film zostaje dodany do filmów obejrzanych przez użytkownika (local-storage)
-// import { createMovieInfoCard } from 'src/js/createMovieInfoCard.js';
-import { createLibraryCard } from './createCard';
+export { storage };
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-const btnWatched = document.querySelector('movie-info__button--watched');
-const btnQueue = document.querySelector('movie-info__button--queue');
+const btnWatched = document.querySelector('#watched');
+const btnQueue = document.querySelector('#queue');
 
-// btnWatched.addEventListener('click', function () {
-// window.localStorage.setItem('add to watched',
-// JSON.stringify()
-// )
-// });
+//notify adjust
+Notify.init({
+  width: '300px',
+  position: 'center-top',
+  closeButton: false,
+  timeout: 2000,
+  success: {
+    background: '#ff6b01',
+  },
+});
 
-// const draft = createLibraryCard(element, genre_dictionary);
-// wrapper.insertAdjacentHTML('beforeend', draft);
-console.log(createLibraryCard);
+// ** storage na btn w library
+const storage = () => {
+  btnWatched.addEventListener('click', e => {
+    e.preventDefault();
+    console.log('klik');
+    localStorage.setItem('watched', 'test name');
+    // showLocalStorage();
+    Notify.success('Movie added to Watched');
+  });
+  btnQueue.addEventListener('click', e => {
+    e.preventDefault();
+    console.log('kju');
+    localStorage.setItem('queue', 'value');
+    // showLocalStorage();
+    Notify.success('Movie added to Queue');
+  });
+};
+
+//**  */
+import { genreIdToList, createHomeCard, createLibraryCard } from './createCard';
+
+const header = document.querySelector('.header__title');
+console.log(header);
+
+// header.addEventListener('click', storage);
+
+// const storage = () => {
+//   localStorage.setItem('movie details', JSON.stringify(data.results[1]));
+// };
+
+// ** test na local storage - usunąć na koniec
+// window.localStorage.setItem(
+//   'movie',
+//   JSON.stringify({ name: 'imię', movie: 'film' })
+// );
+
+// function showLocalStorage() {
+//   let value = [];
+//   let keys = Object.keys(localStorage);
+//   let i = keys.length;
+//   while (i--) {
+//     value.push(localStorage.getItem(keys[i]));
+//   }
+//   document.querySelector('.film-container').textContent = value;
+// }
+
+// import {}
+// const movie = document.querySelector('.movie-card');
