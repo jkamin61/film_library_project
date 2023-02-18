@@ -23,6 +23,7 @@
     "firebase": "^9.17.1",
     "modern-normalize": "^1.1.0",
     "notiflix": "^3.2.6"
+<<<<<<< Updated upstream
 =======
 <<<<<<< Updated upstream
     "modern-normalize": "^1.1.0"
@@ -31,6 +32,8 @@
     "modern-normalize": "^1.1.0",
     "notiflix": "^3.2.6"
 >>>>>>> Stashed changes
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   },
   "devDependencies": {
