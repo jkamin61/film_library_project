@@ -33,7 +33,7 @@ const registerModalWindow = document.querySelector('#register-form');
 const alreadySignedBtn = document.querySelector('.register__registered');
 const logOutButton = document.querySelector('.logout');
 
-register = () => {
+const register = () => {
   let username = document.getElementById('username-register').value;
   let email = document.getElementById('email-register').value;
   let password = document.getElementById('password-register').value;
