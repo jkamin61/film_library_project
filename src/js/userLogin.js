@@ -2,7 +2,7 @@ export { modalFunctions };
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
 import { getDatabase } from 'firebase/database';
-// import Notiflix from 'notiflix';
+import Notiflix from 'notiflix';
 const firebaseConfig = {
   apiKey: 'AIzaSyA1p5zFRYitESqi8tfXfMidfyvRPHCvW00',
   authDomain: 'film-library-499b4.firebaseapp.com',
@@ -20,11 +20,11 @@ register = () => {
   let email = document.getElementById('email-register').value;
   let password = document.getElementById('password-register').value;
   if (validateEmail(email) === false || validatePassword(password) === false) {
-    alert('Incorrect format of email or password');
+    Notiflix.Notify.warning('Incorrect format of email or password');
     return;
   }
   if (validateFields(username) === false) {
-    alert('Incorrect username. Please, try something different.');
+    Notiflix.Notify.warning('Incorrect username. Please, try something different.');
   }
 
   createUserWithEmailAndPassword(auth, email, password)
@@ -37,14 +37,37 @@ register = () => {
         lastLogin : Date.now()
       }
       databaseRef.child('users/' + user.uid).set(userData) */
-      alert('User created!');
+      Notiflix.Notify.success('User created!');
     })
     .catch(function(error) {
       const errorCode = error.code;
       const errorMessage = error.message;
-      alert(errorMessage);
+      Notiflix.Notify.failure(errorMessage);
     });
+
+
 };
+
+const login = () => {
+  let email = document.getElementById('email-login').value;
+  let password = document.getElementById('password-login').value;
+  if (validateEmail(email) === false || validatePassword(password) === false) {
+    Notiflix.Notify.warning('Incorrect format of email or password');
+    return;
+  }
+  signInWithEmailAndPassword(auth, email, password)
+    .then(function() {
+      Notiflix.Notify.success('Successfully logged in!');
+    })
+    .catch(function(error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      Notiflix.Notify.failure(errorMessage);
+    });
+}
+
+
+
 const validateEmail = (email) => {
   const regex = /^[^@]+@\w+(\.\w+)+\w$/;
   if (regex.test(email) === true) {
@@ -76,6 +99,11 @@ registerButton.addEventListener("click", (event) => {
   event.preventDefault();
   register();
 });
+const loginButton = document.querySelector(".login__modal-btn");
+loginButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  login();
+})
 ///
 const loginOpeningFormBtn = document.querySelector('.login__button');
 const closeLoginModal = document.querySelector('.login__close');
@@ -85,7 +113,6 @@ const registerOpeningFormBtn = document.querySelector('.login__register');
 const loginModalWindow = document.querySelector('.login__modal');
 const registerModalWindow = document.querySelector('#register-form');
 const alreadySignedBtn = document.querySelector('.register__registered');
-const login = document.querySelector('.login__form');
 const modalFunctions = () => {
 
 
@@ -96,7 +123,6 @@ const modalFunctions = () => {
   registerOpeningFormBtn.addEventListener('click', (event) => {
     loginModalWindow.style.display = 'none';
     registerModalWindow.style.display = 'flex';
-    login.style.height = '65%';
   });
   closeLoginModal.addEventListener('click', (event) => {
     event.preventDefault();
