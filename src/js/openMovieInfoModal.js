@@ -3,7 +3,7 @@ import { FetchMoveApi } from './FetchMove';
 import { createMovieInfoCard } from './createMovieInfoCard';
 
 //Used variables
-const backdrop = document.querySelector('.movie-info-backdrop');
+const backdrop = document.querySelector('.movie-info__backdrop');
 const fetch_movie = new FetchMoveApi();
 
 function returnID(target) {
@@ -20,7 +20,7 @@ function returnID(target) {
 const handleCloseClick = event => {
   //Handle closing
   if (
-    (event.target.className === 'movie-info-backdrop') |
+    (event.target.className === 'movie-info__backdrop') |
     (event.target.className === 'movie-info__close')
   ) {
     backdrop.classList.toggle('is-hidden');
@@ -38,11 +38,9 @@ const handleOpenClick = event => {
   let currentId = '';
 
   currentId = returnID(event.target);
-  console.log(currentId);
   backdrop.classList.remove('is-hidden');
 
   fetch_movie.getDetail(currentId).then(data => {
-    console.log(createMovieInfoCard(data));
     backdrop.innerHTML = createMovieInfoCard(data);
     backdrop.addEventListener('click', handleCloseClick);
   });
