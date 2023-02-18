@@ -1,8 +1,19 @@
 export { storage };
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+<<<<<<< Updated upstream
 
 const btnWatched = document.querySelector('#watched');
 const btnQueue = document.querySelector('#queue');
+=======
+import './openMovieInfoModal';
+import './createMovieInfoCard';
+import { genreIdToList, createHomeCard, createLibraryCard } from './createCard';
+
+const btnWatched = document.querySelector('.movie-info__button--watched');
+const btnQueue = document.querySelector('.movie-info__button--queue');
+
+console.log(btnWatched);
+>>>>>>> Stashed changes
 
 //notify adjust
 Notify.init({
@@ -34,10 +45,13 @@ const storage = () => {
 };
 
 //**  */
+<<<<<<< Updated upstream
 import { genreIdToList, createHomeCard, createLibraryCard } from './createCard';
 
 const header = document.querySelector('.header__title');
 console.log(header);
+=======
+>>>>>>> Stashed changes
 
 // header.addEventListener('click', storage);
 
