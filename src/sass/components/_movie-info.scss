@@ -32,10 +32,11 @@
   width: calc(100% - 40px);
   background-color: white;
 
-  font-family: roboto;
+  font-family: Roboto;
   font-size: 12px;
   font-weight: 500;
   line-height: 20px;
+  color: black;
 }
 
 .movie-info__container {
@@ -73,6 +74,7 @@
 
 .movie-info__title {
   font-size: 20px;
+  line-height: 24px;
 }
 
 .movie-info__table-row {
