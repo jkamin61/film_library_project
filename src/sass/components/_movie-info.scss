@@ -1,11 +1,42 @@
 @use '../utils/variables';
 
+.movie-info__backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  min-height: 100%;
+  display: inline-block;
+  overflow: auto;
+  padding: 10px 0 10px 0;
+
+  background: rgba(0, 0, 0, 0.25);
+  transition-property: opacity;
+  transition: 500ms linear;
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .movie-info {
   position: absolute;
+  float: left;
+  margin-bottom: 10px;
+
   left: 50%;
+
   transform: translateX(-50%);
-  min-width: 280px;
-  border: 1px solid black;
+  width: calc(100% - 40px);
+  background-color: white;
+
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  color: black;
 }
 
 .movie-info__container {
@@ -36,29 +67,26 @@
 
 .movie-info__poster {
   max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
   border-radius: 5px;
 }
 
 .movie-info__title {
-  font-family: Roboto;
   font-size: 20px;
-  font-weight: 500;
+  line-height: 24px;
 }
 
 .movie-info__table-row {
   height: 26px;
+  line-height: 16px;
 }
 .movie-info__table-legend {
   width: 100px;
+  color: #8c8c8c;
 }
 
 .movie-info__table-content {
-  font-family: Roboto;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-
   &--score {
     display: inline-block;
     width: 36px;
@@ -101,21 +129,29 @@
 @media screen and (min-width: 768px) {
   .movie-info__container {
     display: flex;
-    min-width: 600px;
+    width: 100%;
+    height: 100%;
     padding: 0;
-    padding: 42px 28px 40px;
+    align-items: top;
   }
 
   .movie-info {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 0;
+
+    max-width: 620px;
+    max-height: 560px;
+    padding: 42px 30px 40px 28px;
+  }
+
+  .movie-info__poster {
+    width: 264px;
   }
 
   .movie-info__close {
-    top: 5px;
-    right: 5px;
+    top: -30px;
+    right: 0px;
   }
 
   .movie-info__column {
@@ -131,4 +167,21 @@
 }
 
 @media screen and (min-width: 1024px) {
+  .movie-info {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    max-width: 880px;
+    max-height: 570px;
+    padding: 50px 30px 40px 30px;
+  }
+
+  .movie-info__poster {
+    width: 400px;
+  }
+
+  .movie-info__title {
+    font-size: 30px;
+  }
 }
