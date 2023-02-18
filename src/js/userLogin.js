@@ -1,12 +1,8 @@
 export { modalFunctions };
-// Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
 import { getDatabase } from 'firebase/database';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
+// import Notiflix from 'notiflix';
 const firebaseConfig = {
   apiKey: 'AIzaSyA1p5zFRYitESqi8tfXfMidfyvRPHCvW00',
   authDomain: 'film-library-499b4.firebaseapp.com',
@@ -15,8 +11,6 @@ const firebaseConfig = {
   messagingSenderId: '70753383955',
   appId: '1:70753383955:web:59d9b4c26be7561d35b1e6',
 };
-
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
@@ -33,16 +27,16 @@ register = () => {
     alert('Incorrect username. Please, try something different.');
   }
 
-  auth.createUserWithEmailAndPassword(email, password)
+  createUserWithEmailAndPassword(auth, email, password)
     .then(function() {
-      const user = auth.currentUser;
+      /* const user = auth.currentUser;
       const databaseRef = database.ref();
       const userData = {
         email : email,
         username : username,
         lastLogin : Date.now()
       }
-      databaseRef.child('users/' + user.uid).set(userData)
+      databaseRef.child('users/' + user.uid).set(userData) */
       alert('User created!');
     })
     .catch(function(error) {
@@ -60,7 +54,7 @@ const validateEmail = (email) => {
   }
 };
 const validatePassword = (password) => {
-  if (password <= 6) {
+  if (password < 6) {
     return false;
   } else {
     return true;
@@ -78,7 +72,10 @@ const validateFields = (field) => {
 };
 
 const registerButton = document.querySelector(".register__modal-btn")
-registerButton.addEventListener("click", (register()))
+registerButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  register();
+});
 ///
 const loginOpeningFormBtn = document.querySelector('.login__button');
 const closeLoginModal = document.querySelector('.login__close');
