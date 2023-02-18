@@ -33,7 +33,8 @@ function createHomeCard(data, genre_dict) {
    * data: fetched data of single movie
    * genre_dict: dictionary connecting genre ID to name,
    */
-  const { poster_path, release_date, title, genre_ids, vote_average } = data;
+  const { poster_path, id, release_date, title, genre_ids, vote_average } =
+    data;
 
   const date = new Date(release_date);
   const year = date.getFullYear();
@@ -41,7 +42,7 @@ function createHomeCard(data, genre_dict) {
   const genres = genreIdToList(genre_ids, genre_dict);
 
   const markup = `
-  <div class="movie-card">
+  <div class="movie-card" data-id="${id}">
         <img class="movie-card__image" src="${image_src}" />
         <p class="movie-card__details">
         ${title.toUpperCase()}<br />
@@ -59,7 +60,8 @@ function createLibraryCard(data, genre_dict) {
    * data: fetched data of single movie
    * genre_dict: dictionary connecting genre ID to name
    */
-  const { poster_path, release_date, title, genre_ids, vote_average } = data;
+  const { poster_path, id, release_date, title, genre_ids, vote_average } =
+    data;
 
   const date = new Date(release_date);
   const year = date.getFullYear();
@@ -68,7 +70,7 @@ function createLibraryCard(data, genre_dict) {
   const genres = genreIdToList(genre_ids, genre_dict);
 
   const markup = `
-  <div class="movie-card">
+  <div class="movie-card" data-id="${id}">
         <img class="movie-card__image" src="${image_src}" />
         <p class="movie-card__details">
         ${title.toUpperCase()}<br />
