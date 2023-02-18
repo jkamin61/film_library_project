@@ -1,8 +1,17 @@
 export { modalFunctions };
 import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+} from 'firebase/auth';
 import { getDatabase } from 'firebase/database';
 import Notiflix from 'notiflix';
+
 const firebaseConfig = {
   apiKey: 'AIzaSyA1p5zFRYitESqi8tfXfMidfyvRPHCvW00',
   authDomain: 'film-library-499b4.firebaseapp.com',
@@ -14,6 +23,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
+const loginOpeningFormBtn = document.querySelector('.login');
+const closeLoginModal = document.querySelector('.login__close');
+const closeRegisterModal = document.querySelector('.register__close');
+const modalWindow = document.querySelector('.login__modal');
+const registerOpeningFormBtn = document.querySelector('.login__register');
+const loginModalWindow = document.querySelector('.login__modal');
+const registerModalWindow = document.querySelector('#register-form');
+const alreadySignedBtn = document.querySelector('.register__registered');
+const logOutButton = document.querySelector('.logout');
 
 register = () => {
   let username = document.getElementById('username-register').value;
@@ -29,15 +47,9 @@ register = () => {
 
   createUserWithEmailAndPassword(auth, email, password)
     .then(function() {
-      /* const user = auth.currentUser;
-      const databaseRef = database.ref();
-      const userData = {
-        email : email,
-        username : username,
-        lastLogin : Date.now()
-      }
-      databaseRef.child('users/' + user.uid).set(userData) */
-      Notiflix.Notify.success('User created!');
+      Notiflix.Notify.success('User created! Now please log in');
+      registerModalWindow.style.display = "none";
+      modalWindow.style.display = "flex";
     })
     .catch(function(error) {
       const errorCode = error.code;
@@ -58,15 +70,16 @@ const login = () => {
   signInWithEmailAndPassword(auth, email, password)
     .then(function() {
       Notiflix.Notify.success('Successfully logged in!');
+      loginOpeningFormBtn.style.display = 'none';
+      logOutButton.style.display = 'flex';
+      modalWindow.style.display = 'none';
     })
     .catch(function(error) {
       const errorCode = error.code;
       const errorMessage = error.message;
       Notiflix.Notify.failure(errorMessage);
     });
-}
-
-
+};
 
 const validateEmail = (email) => {
   const regex = /^[^@]+@\w+(\.\w+)+\w$/;
@@ -94,25 +107,30 @@ const validateFields = (field) => {
   }
 };
 
-const registerButton = document.querySelector(".register__modal-btn")
-registerButton.addEventListener("click", (event) => {
+const registerButton = document.querySelector('.register__modal-btn');
+registerButton.addEventListener('click', (event) => {
   event.preventDefault();
   register();
 });
-const loginButton = document.querySelector(".login__modal-btn");
-loginButton.addEventListener("click", (event) => {
+const loginButton = document.querySelector('.login__modal-btn');
+loginButton.addEventListener('click', (event) => {
   event.preventDefault();
   login();
-})
+});
+logOutButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  signOut(auth)
+    .then(function() {
+      Notiflix.Notify.success('Signed out successfully');
+      logOutButton.style.display = "none";
+      loginOpeningFormBtn.style.display = 'flex';
+    })
+    .catch(function() {
+      Notiflix.Notify.failure('Failed to sign out. Try again later.');
+    });
+});
 ///
-const loginOpeningFormBtn = document.querySelector('.login__button');
-const closeLoginModal = document.querySelector('.login__close');
-const closeRegisterModal = document.querySelector('.register__close');
-const modalWindow = document.querySelector('.login__modal');
-const registerOpeningFormBtn = document.querySelector('.login__register');
-const loginModalWindow = document.querySelector('.login__modal');
-const registerModalWindow = document.querySelector('#register-form');
-const alreadySignedBtn = document.querySelector('.register__registered');
+
 const modalFunctions = () => {
 
 
