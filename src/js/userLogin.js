@@ -5,7 +5,6 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-  GoogleAuthProvider,
   sendPasswordResetEmail,
   signOut,
   fetchSignInMethodsForEmail
@@ -109,7 +108,7 @@ const resetPassword = (email) => {
     if (signInMethods.length === 0) {
       Notiflix.Notify.failure('No user found with this email address');
     } else {
-      auth.sendPasswordResetEmail(email).then(function() {
+      sendPasswordResetEmail(auth, email).then(function() {
         Notiflix.Notify.success('Email with reset password options has been sent');
       }).catch(function(error) {
         const errorMessage = error.message;
