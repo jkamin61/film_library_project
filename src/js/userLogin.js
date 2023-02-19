@@ -33,6 +33,21 @@ const registerModalWindow = document.querySelector('#register-form');
 const alreadySignedBtn = document.querySelector('.register__registered');
 const logOutButton = document.querySelector('.logout');
 
+const updateButtonVisibility = (user) => {
+  if (user) {
+    loginOpeningFormBtn.style.display = 'none';
+    logOutButton.style.display = 'flex';
+  } else {
+    loginOpeningFormBtn.style.display = 'flex';
+    logOutButton.style.display = 'none';
+  }
+};
+
+onAuthStateChanged(auth, (user) => {
+  updateButtonVisibility(user);
+});
+
+
 const register = () => {
   let username = document.getElementById('username-register').value;
   let email = document.getElementById('email-register').value;
@@ -122,8 +137,6 @@ logOutButton.addEventListener('click', (event) => {
   signOut(auth)
     .then(function() {
       Notiflix.Notify.success('Signed out successfully');
-      logOutButton.style.display = "none";
-      loginOpeningFormBtn.style.display = 'flex';
     })
     .catch(function() {
       Notiflix.Notify.failure('Failed to sign out. Try again later.');
@@ -159,3 +172,4 @@ const modalFunctions = () => {
   });
 };
 
+updateButtonVisibility(auth.currentUser);
