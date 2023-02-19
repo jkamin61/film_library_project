@@ -12,7 +12,6 @@ function returnID(target) {
   //(recursive function - checking all parent nodes until movie-card)
 
   if (target.className === 'movie-card') {
-    console.log(JSON.stringify(target.dataset));
     return target.dataset.id;
   } else {
     return returnID(target.parentNode);

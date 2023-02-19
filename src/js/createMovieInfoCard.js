@@ -1,6 +1,6 @@
 export { createMovieInfoCard };
 
-function genreIdToList(genre_ids, genre_dict) {
+function genreIdToList(genre_ids) {
   /**
    * Function returning string with listed genres names from array of ids. Used variables:
    * genre_ids: array of genre ids to be compiled into list
@@ -8,11 +8,12 @@ function genreIdToList(genre_ids, genre_dict) {
    */
   const max_genres = 4;
   let genres = '';
+  console.log(genre_ids);
   genre_ids.forEach((element, index) => {
     if (index === 0) {
-      genres += genre_dict[element];
+      genres += element.name;
     } else if (index < max_genres) {
-      genres += `, ${genre_dict[element]}`;
+      genres += `, ${element.name}`;
     }
   });
   if (genre_ids.length > max_genres) {
@@ -22,7 +23,7 @@ function genreIdToList(genre_ids, genre_dict) {
   return genres;
 }
 
-function createMovieInfoCard(data, genre_dict) {
+function createMovieInfoCard(data) {
   /**
    * Function returning markup of movie card on homepage. Used variables:
    * data: fetched data of single movie
@@ -33,7 +34,7 @@ function createMovieInfoCard(data, genre_dict) {
   const {
     poster_path,
     overview,
-    genre_ids,
+    genres,
     original_title,
     title,
     popularity,
@@ -43,11 +44,11 @@ function createMovieInfoCard(data, genre_dict) {
 
   //Preparing data
   const image_src = `https://image.tmdb.org/t/p/w500${poster_path}`;
-  let genres = genreIdToList(genre_ids, genre_dict);
+  let genres_list = genreIdToList(genres);
   const score = parseFloat(vote_average).toFixed(1);
   const popularity_trimmed = parseFloat(popularity).toFixed(1);
 
-  const markup = `
+  const markup = `+
     <div class="movie-info">
         <div class="movie-info__container">
           <button class="movie-info__close">&#10005;</button>
@@ -71,7 +72,7 @@ function createMovieInfoCard(data, genre_dict) {
                     </tr>
                     <tr class="movie-info__table-row">
                         <td class="movie-info__table-legend">Genre</td>
-                        <td class="movie-info__table-content">${genres}</td>
+                        <td class="movie-info__table-content">${genres_list}</td>
                     </tr>
                 </table>
             

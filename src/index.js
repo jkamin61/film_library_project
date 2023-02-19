@@ -20,6 +20,8 @@ get_movies.getTrendDay(1).then(data => {
     });
   });
 });
+
 openMovieInfoModal();
 modalFunctions();
 setPagination(1);
+
