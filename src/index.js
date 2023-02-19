@@ -1,23 +1,11 @@
-import { createHomeCard, createLibraryCard } from './js/createCard';
-import { compileGenreDictionary } from './js/compileGenreDictionary';
-import { FetchMoveApi } from './js/FetchMove';
 import './js/openFooterMdl';
 import { modalFunctions } from './js/userLogin';
 import { openMovieInfoModal } from './js/openMovieInfoModal';
-
-const wrapper = document.querySelector('.wrapper');
-const PER_PAGE = 20;
-const get_movies = new FetchMoveApi();
 import { searchMovies } from './js/searchMovie';
+import { renderHomeGallery } from './js/renderGallery';
 
-get_movies.getTrendDay(1).then(data => {
-  compileGenreDictionary().then(genre_dictionary => {
-    data.results.forEach(element => {
-      const draft = createLibraryCard(element, genre_dictionary);
-      wrapper.insertAdjacentHTML('beforeend', draft);
-    });
-  });
-});
+let current_page = 1;
 
+renderHomeGallery(current_page);
 openMovieInfoModal();
 modalFunctions();
