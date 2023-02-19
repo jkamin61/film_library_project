@@ -124,7 +124,7 @@ export async function setPagination(page) {
             topFunction();
             // loader.on();
             let pageNumber = event.target.textContent;
-            showTrendingMovies(pageNumber).then(() => {
+            nextfunction(pageNumber).then(() => {
               openMovieInfoModal();
               loader.off();
               
@@ -135,7 +135,7 @@ export async function setPagination(page) {
             topFunction();
             // loader.on();
             currentPage--;
-            showTrendingMovies(currentPage).then(() => {
+            nextfunction(currentPage).then(() => {
               openMovieInfoModal();
               loader.off();
             });
@@ -145,7 +145,7 @@ export async function setPagination(page) {
             topFunction();
             // loader.on();
             currentPage++;
-            showTrendingMovies(currentPage).then(() => {
+            nextfunction(currentPage).then(() => {
               openMovieInfoModal();
               loader.off();
             });
