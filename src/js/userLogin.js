@@ -23,7 +23,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
-const loginOpeningFormBtn = document.querySelector('.login__button');
+const loginOpeningFormBtn = document.querySelector(".login__button");
+const loginOpeningForm = document.querySelector('.login');
 const closeLoginModal = document.querySelector('.login__close');
 const closeRegisterModal = document.querySelector('.register__close');
 const modalWindow = document.querySelector('.login__modal');
@@ -38,10 +39,10 @@ const loginButton = document.querySelector('.login__modal-btn');
 
 const updateButtonVisibility = (user) => {
   if (user) {
-    loginOpeningFormBtn.style.display = 'none';
+    loginOpeningForm.style.display = 'none';
     logOutButton.style.display = 'flex';
   } else {
-    loginOpeningFormBtn.style.display = 'flex';
+    loginOpeningForm.style.display = 'flex';
     logOutButton.style.display = 'none';
   }
 };
@@ -88,7 +89,7 @@ const login = () => {
   signInWithEmailAndPassword(auth, email, password)
     .then(function() {
       Notiflix.Notify.success('Successfully logged in!');
-      loginOpeningFormBtn.style.display = 'none';
+      loginOpeningForm.style.display = 'none';
       logOutButton.style.display = 'flex';
       modalWindow.style.display = 'none';
     })
