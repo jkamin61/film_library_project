@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   GoogleAuthProvider,
-  signInWithPopup,
+  sendPasswordResetEmail,
   signOut,
 } from 'firebase/auth';
 import { getDatabase } from 'firebase/database';
@@ -32,6 +32,7 @@ const loginModalWindow = document.querySelector('.login__modal');
 const registerModalWindow = document.querySelector('#register-form');
 const alreadySignedBtn = document.querySelector('.register__registered');
 const logOutButton = document.querySelector('.logout');
+const resetPasswordButton = document.querySelector(".login__reset");
 
 const updateButtonVisibility = (user) => {
   if (user) {
@@ -96,6 +97,16 @@ const login = () => {
     });
 };
 
+const resetPassword = (email) => {
+  sendPasswordResetEmail(auth, email).then(function() {
+    Notiflix.Notify.success('Wysłano e-mail z instrukcjami do zresetowania hasła.');
+  }).catch(function(error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    Notiflix.Notify.failure('Wystąpił błąd: ' + errorMessage);
+  });
+}
+
 const validateEmail = (email) => {
   const regex = /^[^@]+@\w+(\.\w+)+\w$/;
   if (regex.test(email) === true) {
@@ -142,6 +153,11 @@ logOutButton.addEventListener('click', (event) => {
       Notiflix.Notify.failure('Failed to sign out. Try again later.');
     });
 });
+resetPasswordButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  let email = document.getElementById('email-login').value;
+  resetPassword(email);
+})
 ///
 
 const modalFunctions = () => {
