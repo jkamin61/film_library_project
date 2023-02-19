@@ -46,7 +46,7 @@
   position: absolute;
   top: 0px;
   right: 0px;
-
+  cursor: pointer;
   width: 30px;
   height: 30px;
 
@@ -104,6 +104,7 @@
   padding-bottom: 40px;
   display: flex;
   justify-content: space-around;
+
 }
 
 .movie-info__button {
@@ -112,16 +113,34 @@
   border-radius: 5px;
   padding: 0px;
 
-  &--watched {
+  color: getColor('header-text-color');
+  cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
+  background: none;
+  border: 1px solid getColor('header-text-color');
+  transition-duration: 250ms;
+
+  &:hover {
+    scale: 1.06;
+    text-shadow: -2px 2px 15px rgba(255, 228, 210, 0.9);
     background-color: getColor('accent');
     color: white;
+  }
+
+  &--watched {
+
+    color: black;
     border: none;
+    border-radius: 5px;
+    border: 1px solid black;
   }
 
   &--queue {
     background-color: white;
     color: black;
     border: 1px solid black;
+    border-radius: 5px;
   }
 }
 
