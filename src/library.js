@@ -1,7 +1,4 @@
 import './js/openFooterMdl';
-import { modalFunctions } from './js/userLogin';
 import './js/localStorage';
-import { storage } from './js/localStorage';
-
+import { modalFunctions } from './js/userLogin';
 modalFunctions();
-storage();

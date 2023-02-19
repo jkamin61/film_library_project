@@ -1,6 +1,7 @@
 export { openMovieInfoModal };
 import { FetchMoveApi } from './FetchMove';
 import { createMovieInfoCard } from './createMovieInfoCard';
+import { handleButtons } from './localStorage';
 
 //Used variables
 const backdrop = document.querySelector('.movie-info__backdrop');
@@ -26,6 +27,7 @@ const handleCloseClick = event => {
   ) {
     backdrop.classList.toggle('is-hidden');
     backdrop.innerHTML = '';
+    backdrop.removeEventListener('click', handleButtons);
     return;
   }
 };
@@ -44,6 +46,7 @@ const handleOpenClick = event => {
   fetch_movie.getDetail(currentId).then(data => {
     backdrop.innerHTML = createMovieInfoCard(data);
     backdrop.addEventListener('click', handleCloseClick);
+    backdrop.addEventListener('click', handleButtons(data));
   });
 };
 
