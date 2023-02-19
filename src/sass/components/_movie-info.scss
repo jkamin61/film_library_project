@@ -145,7 +145,7 @@
   }
 
   .movie-info__poster {
-    width: 264px;
+    width: 100%;
   }
 
   .movie-info__close {
@@ -177,7 +177,8 @@
   }
 
   .movie-info__poster {
-    width: 400px;
+    max-width: 400px;
+    max-height: 500px;
   }
 
   .movie-info__title {
