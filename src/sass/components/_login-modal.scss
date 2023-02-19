@@ -304,3 +304,9 @@
     text-shadow: -2px 2px 15px rgba(255, 228, 210, 0.9);
   }
 }
+
+@media screen and(min-width: 1024px) {
+  .register__form {
+    height: 460px;
+  }
+}
