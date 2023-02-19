@@ -1,4 +1,4 @@
-@import './utils/variables';
+@use '../utils/variables';
 .movie-card {
   width: 280px;
   height: 440px;
@@ -22,7 +22,6 @@
   margin-top: 10px;
   color: getColor('title');
 
-  font-family: Roboto;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
