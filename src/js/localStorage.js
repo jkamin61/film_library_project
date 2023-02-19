@@ -6,7 +6,6 @@ import { genreIdToList, createHomeCard, createLibraryCard } from './createCard';
 import { openMovieInfoModal } from './openMovieInfoModal';
 import { createMovieInfoCard } from './createMovieInfoCard';
 
-console.log(btnWatched);
 import './openMovieInfoModal';
 import './createMovieInfoCard';
 import { FetchMoveApi } from './FetchMove';
@@ -29,7 +28,6 @@ export function handleButtons() {
     localStorage.setItem('added to queue', 'queue');
     Notify.success('Movie was added to Queue');
   });
-
 }
 
 //notify adjust
