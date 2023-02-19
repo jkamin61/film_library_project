@@ -78,6 +78,5 @@ function createLibraryCard(data, genre_dict) {
           ><span class="movie-card__details--score">${score}</span>
         </p>
       </div>`;
-
   return markup;
 }

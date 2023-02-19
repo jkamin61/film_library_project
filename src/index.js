@@ -1,4 +1,5 @@
 import './js/openFooterMdl';
+import { localStorage } from './js/localStorage';
 import { modalFunctions } from './js/userLogin';
 import { openMovieInfoModal } from './js/openMovieInfoModal';
 import { setPagination } from './js/pagination';
