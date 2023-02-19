@@ -8,6 +8,7 @@ import {
   GoogleAuthProvider,
   sendPasswordResetEmail,
   signOut,
+  fetchSignInMethodsForEmail
 } from 'firebase/auth';
 import { getDatabase } from 'firebase/database';
 import Notiflix from 'notiflix';
@@ -98,12 +99,24 @@ const login = () => {
 };
 
 const resetPassword = (email) => {
-  sendPasswordResetEmail(auth, email).then(function() {
-    Notiflix.Notify.success('Wysłano e-mail z instrukcjami do zresetowania hasła.');
+  if (!email) {
+    Notiflix.Notify.warning('Please write your email address');
+    return;
+  }
+  fetchSignInMethodsForEmail(auth, email).then(function(signInMethods) {
+    if (signInMethods.length === 0) {
+      Notiflix.Notify.failure('No user found with this email address');
+    } else {
+      auth.sendPasswordResetEmail(email).then(function() {
+        Notiflix.Notify.success('Email with reset password options has been sent');
+      }).catch(function(error) {
+        const errorMessage = error.message;
+        Notiflix.Notify.failure('There was an error: ' + errorMessage);
+      });
+    }
   }).catch(function(error) {
-    const errorCode = error.code;
     const errorMessage = error.message;
-    Notiflix.Notify.failure('Wystąpił błąd: ' + errorMessage);
+    Notiflix.Notify.failure('There was an error: ' + errorMessage);
   });
 }
 
