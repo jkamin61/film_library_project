@@ -9,7 +9,7 @@ function renderHomeGallery(page) {
   get_movies.getTrendDay(page).then(data => {
     compileGenreDictionary().then(genre_dictionary => {
       data.results.forEach(element => {
-        const draft = createLibraryCard(element, genre_dictionary);
+        const draft = createHomeCard(element, genre_dictionary);
         wrapper.insertAdjacentHTML('beforeend', draft);
       });
     });
