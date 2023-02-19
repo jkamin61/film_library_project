@@ -1,7 +1,7 @@
 export { createHomeCard, createLibraryCard };
 
 //How many genres will show up on list at most, used to declutter cards
-const MAX_GENRES = 4;
+const MAX_GENRES = 3;
 
 function genreIdToList(genre_ids, genre_dict) {
   /**
@@ -33,7 +33,8 @@ function createHomeCard(data, genre_dict) {
    * data: fetched data of single movie
    * genre_dict: dictionary connecting genre ID to name,
    */
-  const { poster_path, release_date, title, genre_ids, vote_average } = data;
+  const { poster_path, id, release_date, title, genre_ids, vote_average } =
+    data;
 
   const date = new Date(release_date);
   const year = date.getFullYear();
@@ -41,10 +42,10 @@ function createHomeCard(data, genre_dict) {
   const genres = genreIdToList(genre_ids, genre_dict);
 
   const markup = `
-  <div class="movie-card">
+  <div class="movie-card" data-id="${id}">
         <img class="movie-card__image" src="${image_src}" />
         <p class="movie-card__details">
-        ${title}<br />
+        ${title.toUpperCase()}<br />
           <span class="movie-card__details--genre">${genres} | ${year}</span>
         </p>
       </div>`;
@@ -59,7 +60,8 @@ function createLibraryCard(data, genre_dict) {
    * data: fetched data of single movie
    * genre_dict: dictionary connecting genre ID to name
    */
-  const { poster_path, release_date, title, genre_ids, vote_average } = data;
+  const { poster_path, id, release_date, title, genre_ids, vote_average } =
+    data;
 
   const date = new Date(release_date);
   const year = date.getFullYear();
@@ -68,14 +70,13 @@ function createLibraryCard(data, genre_dict) {
   const genres = genreIdToList(genre_ids, genre_dict);
 
   const markup = `
-  <div class="movie-card">
+  <div class="movie-card" data-id="${id}">
         <img class="movie-card__image" src="${image_src}" />
         <p class="movie-card__details">
-        ${title}<br />
+        ${title.toUpperCase()}<br />
           <span class="movie-card__details--genre">${genres} | ${year}</span
           ><span class="movie-card__details--score">${score}</span>
         </p>
       </div>`;
-
   return markup;
 }

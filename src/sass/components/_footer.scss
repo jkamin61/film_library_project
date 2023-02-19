@@ -1,14 +1,17 @@
+
 .footer {
-  background-color: rgba(247, 247, 247, 1);
+  background-color: getColor('footer-bacground-color');
+  text-align: center;
+
   padding-top: 28.7px;
   padding-bottom: 29.7px;
-  text-align: center;
 
   &__text {
     font-family: 'Roboto';
     font-size: 14px;
     line-height: 1.143;
-    color: #545454;
+    color: getColor('footer-text-color');
+    margin: 0;
   }
 
   &__link {
@@ -22,17 +25,19 @@
     display: -webkit-inline-box;
     animation: beat 1.2s infinite;
     margin-inline: 10px;
+    margin-top: 9.9;
   }
   &__clapper {
     width: 100%;
-    max-width: 600px;
+    max-width: 300px;
     height: auto;
   }
+
   &__close {
     width: 25px;
-    position: absolute;
-    top: 20%;
-    left: 93%;
+    right: 2%;
+    top: 15%;
+
     cursor: pointer;
   }
   &__close:hover {
@@ -40,15 +45,13 @@
   }
 
   &__list {
-    position: absolute;
-    top: 46%;
-    left: 36%;
     list-style: none;
     padding: 0;
+    top: 42%;
   }
   &__list-person {
     font-family: 'Fredericka the Great', cursive;
-    font-size: 21px;
+    font-size: 16px;
     color: white;
     margin-bottom: 10px;
     text-align: center;
@@ -95,20 +98,26 @@
   height: 100%;
   z-index: 10;
   background: rgba(0, 0, 0, 0.3);
-  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1),
-    visibility 1s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal {
+  justify-content: center;
+  display: flex;
+  position: relative;
+  top: 14%;
+}
+.modal > *:not(.footer__clapper) {
   position: absolute;
 }
-
 .is-hidden {
   display: none;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: #{$tablet-width}) {
+  .modal {
+    top: 0%;
+  }
+
   .footer {
     padding-top: 30px;
     padding-bottom: 28px;
@@ -117,14 +126,21 @@
       display: flex;
       justify-content: center;
     }
+    &__heart {
+      margin-top: 0;
+    }
+
+    &__list {
+      top: 45%;
+    }
     &__list-person {
       font-family: 'Fredericka the Great', cursive;
       font-size: 36px;
       color: white;
       margin-bottom: 10px;
     }
-    &__list {
-      left: 27%;
+    &__clapper {
+      max-width: 600px;
     }
 
     &__text {
