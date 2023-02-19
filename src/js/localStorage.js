@@ -1,21 +1,16 @@
 export { storage };
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-const btnWatched = document.querySelector('#watched');
-const btnQueue = document.querySelector('#queue');
-=======
 import './openMovieInfoModal';
 import './createMovieInfoCard';
 import { genreIdToList, createHomeCard, createLibraryCard } from './createCard';
+import { openMovieInfoModal } from './openMovieInfoModal';
+import { createMovieInfoCard } from './createMovieInfoCard';
+
 
 const btnWatched = document.querySelector('.movie-info__button--watched');
 const btnQueue = document.querySelector('.movie-info__button--queue');
 
 console.log(btnWatched);
->>>>>>> Stashed changes
-=======
 import './openMovieInfoModal';
 import './createMovieInfoCard';
 import { FetchMoveApi } from './FetchMove';
@@ -35,7 +30,6 @@ const addToQueue = movie => {
 function handleWatchedBtn() {
   const btnWatched = document.querySelector('.movie-info__button--watched');
 }
->>>>>>> Stashed changes
 
 //notify adjust
 Notify.init({
@@ -67,19 +61,8 @@ const storage = () => {
 };
 
 //**  */
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-import { genreIdToList, createHomeCard, createLibraryCard } from './createCard';
 
-const header = document.querySelector('.header__title');
-console.log(header);
-=======
->>>>>>> Stashed changes
-=======
-import { genreIdToList, createHomeCard, createLibraryCard } from './createCard';
-import { openMovieInfoModal } from './openMovieInfoModal';
-import { createMovieInfoCard } from './createMovieInfoCard';
->>>>>>> Stashed changes
+
 
 // header.addEventListener('click', storage);
 
