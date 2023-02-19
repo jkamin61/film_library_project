@@ -624,6 +624,7 @@ input:focus::placeholder {
   position: absolute;
   top: 0px;
   right: 0px;
+  cursor: pointer;
   width: 30px;
   height: 30px;
   font-weight: 700;
@@ -683,16 +684,31 @@ input:focus::placeholder {
   width: 112px;
   border-radius: 5px;
   padding: 0px;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
+  background: none;
+  border: 1px solid #fff;
+  transition-duration: 250ms;
 }
-.movie-info__button--watched {
+.movie-info__button:hover {
+  scale: 1.06;
+  text-shadow: -2px 2px 15px rgba(255, 228, 210, 0.9);
   background-color: #ff6b01;
   color: white;
+}
+.movie-info__button--watched {
+  color: black;
   border: none;
+  border-radius: 5px;
+  border: 1px solid black;
 }
 .movie-info__button--queue {
   background-color: white;
   color: black;
   border: 1px solid black;
+  border-radius: 5px;
 }
 
 @media screen and (min-width: 768px) {
@@ -748,7 +764,7 @@ input:focus::placeholder {
 .login {
   display: flex;
   justify-content: end;
-  padding: 10px 20px;
+  padding: 10px 30px;
 }
 .login__button {
   height: 24px;
@@ -769,6 +785,8 @@ input:focus::placeholder {
   line-height: 14px;
   text-decoration: none;
   color: #fff;
+  justify-content: center;
+  align-items: center;
 }
 .login__button:hover {
   scale: 1.06;
