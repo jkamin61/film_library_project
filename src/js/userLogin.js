@@ -24,7 +24,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
-const loginOpeningFormBtn = document.querySelector('.login');
+const loginOpeningFormBtn = document.querySelector('.login__button');
 const closeLoginModal = document.querySelector('.login__close');
 const closeRegisterModal = document.querySelector('.register__close');
 const modalWindow = document.querySelector('.login__modal');
@@ -34,6 +34,8 @@ const registerModalWindow = document.querySelector('#register-form');
 const alreadySignedBtn = document.querySelector('.register__registered');
 const logOutButton = document.querySelector('.logout');
 const resetPasswordButton = document.querySelector(".login__reset");
+const registerButton = document.querySelector('.register__modal-btn');
+const loginButton = document.querySelector('.login__modal-btn');
 
 const updateButtonVisibility = (user) => {
   if (user) {
@@ -146,12 +148,12 @@ const validateFields = (field) => {
   }
 };
 
-const registerButton = document.querySelector('.register__modal-btn');
+
 registerButton.addEventListener('click', (event) => {
   event.preventDefault();
   register();
 });
-const loginButton = document.querySelector('.login__modal-btn');
+
 loginButton.addEventListener('click', (event) => {
   event.preventDefault();
   login();
@@ -199,6 +201,7 @@ const modalFunctions = () => {
     registerModalWindow.style.display = 'none';
     loginModalWindow.style.display = 'flex';
   });
+
 };
 
 updateButtonVisibility(auth.currentUser);
