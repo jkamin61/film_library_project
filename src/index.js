@@ -4,6 +4,7 @@ import { FetchMoveApi } from './js/FetchMove';
 import './js/openFooterMdl';
 import { modalFunctions } from './js/userLogin';
 import { openMovieInfoModal } from './js/openMovieInfoModal';
+import { setPagination } from './js/pagination';
 
 const wrapper = document.querySelector('.wrapper');
 const PER_PAGE = 20;
@@ -21,3 +22,4 @@ get_movies.getTrendDay(1).then(data => {
 
 openMovieInfoModal();
 modalFunctions();
+setPagination(1);
