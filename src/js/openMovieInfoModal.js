@@ -21,12 +21,27 @@ function returnID(target) {
 const handleCloseClick = event => {
   //Handle closing
   if (
-    (event.target.className === 'movie-info__backdrop') |
+    !(event.target.className === 'movie-info__backdrop') |
     (event.target.className === 'movie-info__close')
   ) {
     backdrop.classList.toggle('is-hidden');
     backdrop.innerHTML = '';
     backdrop.removeEventListener('click', handleButtons);
+    window.removeEventListener('click', handleCloseClick);
+    backdrop.removeEventListener('click', handleCloseESC);
+    return;
+  }
+};
+
+const handleCloseESC = event => {
+  //Handle closing
+  console.log(event.code);
+  if (event.code === 'Escape') {
+    backdrop.classList.toggle('is-hidden');
+    backdrop.innerHTML = '';
+    backdrop.removeEventListener('click', handleButtons);
+    window.removeEventListener('click', handleCloseClick);
+    backdrop.removeEventListener('click', handleCloseESC);
     return;
   }
 };
@@ -45,6 +60,7 @@ const handleOpenClick = event => {
   fetch_movie.getDetail(currentId).then(data => {
     backdrop.innerHTML = createMovieInfoCard(data);
     backdrop.addEventListener('click', handleCloseClick);
+    window.addEventListener('keydown', handleCloseESC);
     backdrop.addEventListener('click', handleButtons(data));
   });
 };
