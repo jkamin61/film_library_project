@@ -6,9 +6,8 @@ function genreIdToList(genre_ids) {
    * genre_ids: array of genre ids to be compiled into list
    * genre_dict: dictionary connecting genre ID to name
    */
-  const max_genres = 4;
+  const max_genres = 5;
   let genres = '';
-  console.log(genre_ids);
   genre_ids.forEach((element, index) => {
     if (index === 0) {
       genres += element.name;
@@ -68,7 +67,7 @@ function createMovieInfoCard(data) {
                     </tr>
                     <tr class="movie-info__table-row">
                         <td class="movie-info__table-legend">Original Title</td>
-                        <td class="movie-info__table-content">${original_title}</td>
+                        <td class="movie-info__table-content">${original_title.toUpperCase()}</td>
                     </tr>
                     <tr class="movie-info__table-row">
                         <td class="movie-info__table-legend">Genre</td>
