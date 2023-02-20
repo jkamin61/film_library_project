@@ -22,7 +22,7 @@ document
       search_movies.searchResults = results.results;
       compileGenreDictionary().then(genre_dictionary => {
         search_movies.searchResults.forEach(element => {
-          const draft = createLibraryCard(element, genre_dictionary);
+          const draft = createHomeCard(element, genre_dictionary);
           wrapper.insertAdjacentHTML('beforeend', draft);
         });
       });

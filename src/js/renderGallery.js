@@ -1,4 +1,5 @@
 export { renderHomeGallery, renderLibraryGallery };
+export { renderLibraryWatched, renderLibraryQueue };
 import { FetchMoveApi } from './FetchMove';
 import { createHomeCard, createLibraryCard } from './createCard';
 import { compileGenreDictionary } from './compileGenreDictionary';
@@ -34,11 +35,12 @@ function renderLibraryGallery() {
 
 function renderLibraryWatched() {
   const gallery = document.querySelector('.wrapper');
+  const source = 'watched';
   let markup = '';
   const data_array = JSON.parse(localStorage.getItem('addedToWatched'));
 
-  data_array.forEach(element => {
-    markup += createLibraryCard(element);
+  data_array.forEach((element, index) => {
+    markup += createLibraryCard(element, index, source);
   });
 
   gallery.innerHTML = markup;
@@ -46,11 +48,13 @@ function renderLibraryWatched() {
 
 function renderLibraryQueue() {
   const gallery = document.querySelector('.wrapper');
+  const source = 'queue';
   const data_array = JSON.parse(localStorage.getItem('addedToQueue'));
   let markup = '';
 
-  data_array.forEach(element => {
-    markup += createLibraryCard(element);
+  data_array.forEach((element, index) => {
+    markup += createLibraryCard(element, index, source);
   });
+
   gallery.innerHTML = markup;
 }

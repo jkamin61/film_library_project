@@ -32,7 +32,7 @@ function genreArrayToList(genre_array) {
    * genre_ids: array of genre ids to be compiled into list
    * genre_dict: dictionary connecting genre ID to name
    */
-  const max_genres = 5;
+  const max_genres = 2;
   let genres = '';
   genre_array.forEach((element, index) => {
     if (index === 0) {
@@ -75,7 +75,7 @@ function createHomeCard(data, genre_dict) {
   return markup;
 }
 
-function createLibraryCard(data) {
+function createLibraryCard(data, index, source) {
   /**
    * Function returning markup of movie card on library.
    * Used variables:
@@ -91,7 +91,7 @@ function createLibraryCard(data) {
   const genres_list = genreArrayToList(genres);
 
   const markup = `
-  <div class="movie-card" data-id="${id}">
+  <div class="movie-card" data-id="${id}" data-index="${index}" data-source="${source}">
         <img class="movie-card__image" src="${image_src}" />
         <p class="movie-card__details">
         ${title.toUpperCase()}<br />
