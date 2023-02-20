@@ -26,6 +26,28 @@ function genreIdToList(genre_ids, genre_dict) {
   return genres;
 }
 
+function genreArrayToList(genre_array) {
+  /**
+   * Function returning string with listed genres names from array. Used variables:
+   * genre_ids: array of genre ids to be compiled into list
+   * genre_dict: dictionary connecting genre ID to name
+   */
+  const max_genres = 5;
+  let genres = '';
+  genre_array.forEach((element, index) => {
+    if (index === 0) {
+      genres += element.name;
+    } else if (index < max_genres) {
+      genres += `, ${element.name}`;
+    }
+  });
+  if (genre_array.length > max_genres) {
+    genres += '...';
+  }
+
+  return genres;
+}
+
 function createHomeCard(data, genre_dict) {
   /**
    * Function returning markup of movie card on homepage.
@@ -53,28 +75,27 @@ function createHomeCard(data, genre_dict) {
   return markup;
 }
 
-function createLibraryCard(data, genre_dict) {
+function createLibraryCard(data) {
   /**
    * Function returning markup of movie card on library.
    * Used variables:
    * data: fetched data of single movie
    * genre_dict: dictionary connecting genre ID to name
    */
-  const { poster_path, id, release_date, title, genre_ids, vote_average } =
-    data;
+  const { poster_path, id, release_date, title, genres, vote_average } = data;
 
   const date = new Date(release_date);
   const year = date.getFullYear();
   const image_src = `https://image.tmdb.org/t/p/w500${poster_path}`;
   const score = parseFloat(vote_average).toFixed(1);
-  const genres = genreIdToList(genre_ids, genre_dict);
+  const genres_list = genreArrayToList(genres);
 
   const markup = `
   <div class="movie-card" data-id="${id}">
         <img class="movie-card__image" src="${image_src}" />
         <p class="movie-card__details">
         ${title.toUpperCase()}<br />
-          <span class="movie-card__details--genre">${genres} | ${year}</span
+          <span class="movie-card__details--genre">${genres_list} | ${year}</span
           ><span class="movie-card__details--score">${score}</span>
         </p>
       </div>`;
