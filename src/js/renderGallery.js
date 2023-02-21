@@ -1,5 +1,6 @@
 export { renderHomeGallery, renderLibraryGallery };
 export { renderLibraryWatched, renderLibraryQueue };
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { FetchMoveApi } from './FetchMovie';
 import { createHomeCard, createLibraryCard } from './createCard';
 import { compileGenreDictionary } from './compileGenreDictionary';
@@ -51,11 +52,14 @@ function renderLibraryWatched() {
   let markup = '';
   const data_array = JSON.parse(localStorage.getItem('addedToWatched'));
 
-  data_array.forEach((element, index) => {
-    markup += createLibraryCard(element, index, source);
-  });
-
-  gallery.innerHTML = markup;
+  if (data_array) {
+    data_array.forEach((element, index) => {
+      markup += createLibraryCard(element, index, source);
+    });
+    gallery.innerHTML = markup;
+  } else {
+    Notify.failure(`There is no movies in Watched!`);
+  }
 }
 
 function renderLibraryQueue() {
@@ -63,10 +67,25 @@ function renderLibraryQueue() {
   const source = 'queue';
   const data_array = JSON.parse(localStorage.getItem('addedToQueue'));
   let markup = '';
-
-  data_array.forEach((element, index) => {
-    markup += createLibraryCard(element, index, source);
-  });
+  if (data_array) {
+    data_array.forEach((element, index) => {
+      markup += createLibraryCard(element, index, source);
+    });
+  } else {
+    Notify.failure(`There is no movies in Queue!`);
+  }
 
   gallery.innerHTML = markup;
 }
+
+//notify adjust
+Notify.init({
+  width: '300px',
+  position: 'center-top',
+  closeButton: false,
+  timeout: 1500,
+  showOnlyTheLastOne: true,
+  success: {
+    background: '#ff6b01',
+  },
+});
