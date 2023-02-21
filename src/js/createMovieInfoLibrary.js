@@ -53,7 +53,12 @@ function createMovieInfoLibrary(data, current_index, source) {
   } = data;
 
   //Preparing data
-  const image_src = `https://image.tmdb.org/t/p/w500${poster_path}`;
+  if (poster_path) {
+    image_src = `https://image.tmdb.org/t/p/w500${poster_path}`;
+  } else {
+    image_src =
+      'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930';
+  }
   let genres_list = genreIdToList(genres);
   const score = parseFloat(vote_average).toFixed(1);
   const popularity_trimmed = parseFloat(popularity).toFixed(1);

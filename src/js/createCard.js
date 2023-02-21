@@ -60,7 +60,12 @@ function createHomeCard(data, genre_dict) {
 
   const date = new Date(release_date);
   const year = date.getFullYear();
-  const image_src = `https://image.tmdb.org/t/p/w500${poster_path}`;
+  if (poster_path) {
+    image_src = `https://image.tmdb.org/t/p/w500${poster_path}`;
+  } else {
+    image_src =
+      'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930';
+  }
   const genres = genreIdToList(genre_ids, genre_dict);
 
   const markup = `
@@ -86,7 +91,14 @@ function createLibraryCard(data, index, source) {
 
   const date = new Date(release_date);
   const year = date.getFullYear();
-  const image_src = `https://image.tmdb.org/t/p/w500${poster_path}`;
+  let image_src = '';
+
+  if (poster_path) {
+    image_src = `https://image.tmdb.org/t/p/w500${poster_path}`;
+  } else {
+    image_src =
+      'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930';
+  }
   const score = parseFloat(vote_average).toFixed(1);
   const genres_list = genreArrayToList(genres);
 
