@@ -1,5 +1,5 @@
 export { openMovieInfoModalLibrary };
-import { FetchMoveApi } from './FetchMove';
+import { FetchMoveApi } from './FetchMovie';
 import { createMovieInfoLibrary } from './createMovieInfoLibrary';
 import { renderLibraryWatched, renderLibraryQueue } from './renderGallery';
 

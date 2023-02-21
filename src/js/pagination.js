@@ -1,4 +1,4 @@
-import { FetchMoveApi } from "./FetchMove";
+import { FetchMoveApi } from "./FetchMovie";
 import { compileGenreDictionary } from "./compileGenreDictionary";
 import { refs } from "./refs";
 import { openMovieInfoModal } from "./openMovieInfoModal";
@@ -20,13 +20,13 @@ const fetchMoveApi = new FetchMoveApi();
 //           });
 //         });
 //       });
-      
+
 // }
 
 
 function topFunction() {
-    document.body.scrollTop = 0; 
-    document.documentElement.scrollTop = 0; 
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
 
 
@@ -36,13 +36,13 @@ export async function setPagination(page) {
     const totalNumberOfPages = await response.total_pages;
     let currentPage = await response.page;
     let paginationMArkup = '';
-  
+
     if (currentPage > 1) {
       paginationMArkup += `<button type="button" class="pagination-container__prev-button">
       &#8656
   </button>`;
     }
-  
+
     for (let i = 1; i <= totalNumberOfPages; i += 1) {
       if (
         i == 1 ||
@@ -75,13 +75,13 @@ export async function setPagination(page) {
       </button>`;
     }
 
-  
+
     refs.paginationNumbers.innerHTML = paginationMArkup;
 
     const paginationButtons = document.querySelectorAll(
         '.pagination-numbers button'
       );
-    
+
       function createDotsbuttons() {
         const firstDotButtonLocation = document.querySelector(
           'button[data-id="1"]'
@@ -95,16 +95,16 @@ export async function setPagination(page) {
         const lastDotButton = document.createElement('button');
         lastDotButton.textContent = '...';
         lastDotButton.classList.add('pagination-container__last-dot-button');
-    
+
         if (currentPage > 4) {
           firstDotButtonLocation.after(firstDotButton);
         }
-    
+
         if (currentPage < totalNumberOfPages - 3)
           lastDotButtonLocation.before(lastDotButton);
       }
       createDotsbuttons();
-    
+
       function handleActiveButton() {
         paginationButtons.forEach(button => {
           button.classList.remove('pagination-container__button--active');
@@ -114,7 +114,7 @@ export async function setPagination(page) {
           }
         });
       }
-    
+
       handleActiveButton();
 
 
@@ -127,7 +127,7 @@ export async function setPagination(page) {
             nextfunction(pageNumber).then(() => {
               openMovieInfoModal();
               loader.off();
-              
+
             });
           } else if (
             event.target.classList.contains('pagination-container__prev-button')

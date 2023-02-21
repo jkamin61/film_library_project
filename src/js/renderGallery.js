@@ -1,6 +1,6 @@
 export { renderHomeGallery, renderLibraryGallery };
 export { renderLibraryWatched, renderLibraryQueue };
-import { FetchMoveApi } from './FetchMove';
+import { FetchMoveApi } from './FetchMovie';
 import { createHomeCard, createLibraryCard } from './createCard';
 import { compileGenreDictionary } from './compileGenreDictionary';
 

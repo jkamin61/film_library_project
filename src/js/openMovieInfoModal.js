@@ -1,5 +1,5 @@
 export { openMovieInfoModal };
-import { FetchMoveApi } from './FetchMove';
+import { FetchMoveApi } from './FetchMovie';
 import { createMovieInfoCard } from './createMovieInfoCard';
 import { handleButtons } from './localStorage';
 

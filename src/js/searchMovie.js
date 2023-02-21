@@ -1,7 +1,7 @@
 export { search_movies };
 import { createHomeCard, createLibraryCard } from './createCard';
 import { compileGenreDictionary } from './compileGenreDictionary';
-import { FetchMoveApi } from './FetchMove';
+import { FetchMoveApi } from './FetchMovie';
 import './openFooterMdl';
 const wrapper = document.querySelector('.wrapper');
 
