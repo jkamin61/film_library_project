@@ -164,6 +164,7 @@ input:focus::placeholder {
 }
 //active button
 .btn--active {
+  border: none;
   background-color: getColor('accent');
 }
 //tablet
