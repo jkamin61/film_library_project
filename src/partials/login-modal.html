@@ -6,8 +6,8 @@
       <img class='login__close' src='./images/log-reg-cross.svg' alt='close-button' width='14' height='14'>
     </div>
     <div class='login__inputs'>
-      <input placeholder='E-mail' type='email' class='login__input' id='email-login' name='email' required>
-      <input placeholder='Password' type='password' class='login__input' id='password-login' name='password' required>
+      <input placeholder='E-mail' type='email' class='login__input' id='email-login' name='email' required autocomplete='username'>
+      <input placeholder='Password' type='password' class='login__input' id='password-login' name='password' required autocomplete='current-password' >
     </div>
     <a class='login__reset'>Forgot your password?</a>
     <button type='submit' class='login__modal-btn'>Log in</button>
@@ -22,12 +22,12 @@
       <img class='register__close' src='./images/log-reg-cross.svg' alt='close-button' width='14' height='14'>
     </div>
     <div class='register__inputs'>
-      <input placeholder='Username' type='text' class='register__input' id='username-register' name='username' required>
-      <input placeholder='E-mail' type='email' class='register__input' id='email-register' name='email' required>
+      <input placeholder='Username' type='text' class='register__input' id='username-register' name='username' required autocomplete='username'>
+      <input placeholder='E-mail' type='email' class='register__input' id='email-register' name='email' required autocomplete='username'>
       <input placeholder='Password' type='password' class='register__input' id='password-register' name='password'
-             required>
+             required autocomplete="new-password">
       <input placeholder='Confirm Password' type='password' class='register__input' id='confirm-password-register'
-             name='confirm-password' required>
+             name='confirm-password' required autocomplete="new-password">
     </div>
     <button type='submit' class='register__modal-btn'>Sign up</button>
     <a class='register__registered'>Already have an account? Log in</a>

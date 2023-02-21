@@ -1004,7 +1004,7 @@ input:focus::placeholder {
 }
 .logout__button {
   height: 24px;
-  width: 60px;
+  width: 65px;
   border-radius: 5px;
   border: none;
   color: #fff;

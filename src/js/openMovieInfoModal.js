@@ -1,5 +1,5 @@
 export { openMovieInfoModal };
-import { FetchMoveApi } from './FetchMove';
+import { FetchMoveApi } from './FetchMovie';
 import { createMovieInfoCard } from './createMovieInfoCard';
 import { handleButtons } from './localStorage';
 
@@ -35,13 +35,12 @@ const handleCloseClick = event => {
 
 const handleCloseESC = event => {
   //Handle closing
-  console.log(event.code);
   if (event.code === 'Escape') {
     backdrop.classList.toggle('is-hidden');
     backdrop.innerHTML = '';
     backdrop.removeEventListener('click', handleButtons);
-    window.removeEventListener('click', handleCloseClick);
-    backdrop.removeEventListener('click', handleCloseESC);
+    backdrop.removeEventListener('click', handleCloseClick);
+    window.removeEventListener('click', handleCloseESC);
     return;
   }
 };
