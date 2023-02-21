@@ -3,18 +3,30 @@ export { renderLibraryWatched, renderLibraryQueue };
 import { FetchMoveApi } from './FetchMovie';
 import { createHomeCard, createLibraryCard } from './createCard';
 import { compileGenreDictionary } from './compileGenreDictionary';
+import { generateButtons } from './generateButtons';
+import { setPageHome } from './setPage';
 
 function renderHomeGallery(page) {
   const get_movies = new FetchMoveApi();
   const wrapper = document.querySelector('.wrapper');
+  const buttons = document.querySelector('.pagination-numbers');
+  let draft = '';
+
   get_movies.getTrendDay(page).then(data => {
     compileGenreDictionary().then(genre_dictionary => {
       data.results.forEach(element => {
-        const draft = createHomeCard(element, genre_dictionary);
-        wrapper.insertAdjacentHTML('beforeend', draft);
+        draft += createHomeCard(element, genre_dictionary);
       });
+      wrapper.innerHTML = draft;
     });
   });
+
+  get_movies.getTrendDayTotalPages().then(total_pages => {
+    const buttons_markup = generateButtons(page, total_pages);
+    buttons.innerHTML = buttons_markup;
+  });
+
+  buttons.addEventListener('click', setPageHome);
 }
 
 const handleLibraryButtonsClick = event => {
