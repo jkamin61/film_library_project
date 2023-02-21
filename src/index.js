@@ -5,10 +5,8 @@ import { openMovieInfoModal } from './js/openMovieInfoModal';
 import { setPagination } from './js/pagination';
 import { searchMovies } from './js/searchMovie';
 import { renderHomeGallery } from './js/renderGallery';
+import { setPage } from './js/setPage';
 
-let current_page = 1;
-
-renderHomeGallery(current_page);
+renderHomeGallery(1);
 openMovieInfoModal();
 modalFunctions();
-setPagination(1);
