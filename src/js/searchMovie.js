@@ -5,6 +5,7 @@ import { FetchMoveApi } from './FetchMovie';
 import './openFooterMdl';
 import { generateButtons } from './generateButtons';
 import { setPageSearch, setPageHome } from './setPage';
+import { renderSearchMovies } from './setPage';
 
 const wrapper = document.querySelector('.wrapper');
 const buttons = document.querySelector('.pagination-numbers');
@@ -23,18 +24,9 @@ const firstSearchHandler = async event => {
   if (query) {
     buttons.removeEventListener('click', setPageSearch);
     clearResults();
-    const results = await search_movies.getSearching(query, 1);
-    search_movies.searchResults = results.results;
-    compileGenreDictionary().then(genre_dictionary => {
-      search_movies.searchResults.forEach(element => {
-        const draft = createHomeCard(element, genre_dictionary);
-        wrapper.insertAdjacentHTML('beforeend', draft);
-      });
-    });
-    search_movies.getSearchingTotalPages(query).then(total_pages => {
-      const buttons_markup = generateButtons(1, total_pages);
-      buttons.innerHTML = buttons_markup;
-    });
+
+    renderSearchMovies(1, query);
+
     buttons.addEventListener('click', setPageSearch);
   }
 };

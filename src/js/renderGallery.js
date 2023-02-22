@@ -7,11 +7,16 @@ import { compileGenreDictionary } from './compileGenreDictionary';
 import { generateButtons } from './generateButtons';
 import { setPageHome } from './setPage';
 
+function loaderMarkup() {
+  return '<div class="overlay"><div class="loader"></div> </div>';
+}
+
 function renderHomeGallery(page) {
   const get_movies = new FetchMoveApi();
   const wrapper = document.querySelector('.wrapper');
   const buttons = document.querySelector('.pagination-numbers');
   let draft = '';
+  wrapper.innerHTML = loaderMarkup();
 
   get_movies.getTrendDay(page).then(data => {
     compileGenreDictionary().then(genre_dictionary => {
@@ -53,6 +58,7 @@ function renderLibraryWatched() {
   const data_array = JSON.parse(localStorage.getItem('addedToWatched'));
 
   if (data_array) {
+    gallery.innerHTML = loaderMarkup();
     data_array.forEach((element, index) => {
       markup += createLibraryCard(element, index, source);
     });
@@ -68,6 +74,7 @@ function renderLibraryQueue() {
   const data_array = JSON.parse(localStorage.getItem('addedToQueue'));
   let markup = '';
   if (data_array) {
+    gallery.innerHTML = loaderMarkup();
     data_array.forEach((element, index) => {
       markup += createLibraryCard(element, index, source);
     });
