@@ -60,6 +60,7 @@ function createHomeCard(data, genre_dict) {
 
   const date = new Date(release_date);
   const year = date.getFullYear();
+  let image_src = '';
   if (poster_path) {
     image_src = `https://image.tmdb.org/t/p/w500${poster_path}`;
   } else {

@@ -1,9 +1,13 @@
-export { setPageHome, setPageSearch };
+export { setPageHome, setPageSearch, renderSearchMovies };
 import { generateButtons } from './generateButtons';
 import { compileGenreDictionary } from './compileGenreDictionary';
 import { renderHomeGallery } from './renderGallery';
 import { FetchMoveApi } from './FetchMovie';
 import { createHomeCard } from './createCard';
+
+function loaderMarkup() {
+  return '<div class="overlay"><div class="loader"></div> </div>';
+}
 
 function setPageHome(event) {
   if (event.target.tagName != 'BUTTON') {
@@ -31,6 +35,7 @@ function renderSearchMovies(current_page, query) {
   const search_movies = new FetchMoveApi();
   const wrapper = document.querySelector('.wrapper');
   const buttons = document.querySelector('.pagination-numbers');
+  wrapper.innerHTML = loaderMarkup();
 
   search_movies.getSearching(query, current_page).then(resp => {
     const data_array = resp.results;
