@@ -7,6 +7,10 @@ import { handleButtons } from './localStorage';
 const backdrop = document.querySelector('.movie-info__backdrop');
 const fetch_movie = new FetchMoveApi();
 
+function loaderMarkup() {
+  return '<div class="overlay"><div class="loader"></div> </div>';
+}
+
 function returnID(target) {
   // Return ID of clicked movie Card
   //(recursive function - checking all parent nodes until movie-card)
@@ -55,6 +59,7 @@ const handleOpenClick = event => {
 
   currentId = returnID(event.target);
   backdrop.classList.remove('is-hidden');
+  backdrop.innerHTML = loaderMarkup();
 
   fetch_movie.getDetail(currentId).then(data => {
     backdrop.innerHTML = createMovieInfoCard(data);
