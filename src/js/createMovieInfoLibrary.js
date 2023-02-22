@@ -53,6 +53,7 @@ function createMovieInfoLibrary(data, current_index, source) {
   } = data;
 
   //Preparing data
+  let image_src = '';
   if (poster_path) {
     image_src = `https://image.tmdb.org/t/p/w500${poster_path}`;
   } else {
